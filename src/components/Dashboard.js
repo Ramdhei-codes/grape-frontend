@@ -8,7 +8,7 @@ const useWebSocket = (url) => {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      const colors = ['violet grape', 'green grape'];
+      const colors = ['red apple', 'green apple'];
       const randomColor = colors[Math.floor(Math.random() * colors.length)];
       setLastMessage({
         type: 'new_classification',
@@ -34,14 +34,14 @@ const Dashboard = () => {
   useEffect(() => {
     // Simulate fetching initial data
     const mockStats = [
-      { color: 'violet grape', count: 45 },
-      { color: 'green grape', count: 38 }
+      { color: 'red apple', count: 45 },
+      { color: 'green apple', count: 38 }
     ];
     setStatistics(mockStats);
 
     const mockClassifications = Array.from({ length: 20 }, (_, i) => ({
       id: i + 1,
-      color: i % 2 === 0 ? 'violet grape' : 'green grape',
+      color: i % 2 === 0 ? 'red apple' : 'green apple',
       timestamp: new Date(Date.now() - i * 60000).toISOString()
     }));
     setClassifications(mockClassifications);
@@ -78,8 +78,8 @@ const Dashboard = () => {
   }, [lastMessage]);
 
   const COLORS = {
-    'violet grape': '#8b5cf6',
-    'green grape': '#22c55e'
+    'red apple': '#850606ff',
+    'green apple': '#22c55e'
   };
 
   return (
@@ -88,7 +88,7 @@ const Dashboard = () => {
         {/* Header */}
         <div className="bg-white rounded-lg shadow-md p-6 mb-6">
           <h1 className="text-3xl font-bold text-gray-800 mb-2">
-            🍇 Grape Classification System
+            🍎🍏 Apple Classification System
           </h1>
           <div className="flex items-center gap-2">
             <div className={`w-3 h-3 rounded-full ${connectionStatus === 'connected' ? 'bg-green-500' : 'bg-red-500'}`}></div>
@@ -110,7 +110,7 @@ const Dashboard = () => {
                 </p>
               </div>
               <div className="text-6xl">
-                {lastMessage.data.color === 'violet grape' ? '🍇' : '🟢'}
+                {lastMessage.data.color === 'red apple' ? '🍇' : '🟢'}
               </div>
             </div>
           </div>
